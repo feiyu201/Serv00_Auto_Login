@@ -22,7 +22,7 @@ jobs:
           node-version: '20.x'  
   
       - name: 安装依赖  # 中文描述
-        run: npm install puppeteer  
+        run: npm install  # 确保安装所有依赖，包括 axios
   
       - name: 创建 accounts.json  # 中文描述
         run: echo "$ACCOUNTS_JSON" > accounts.json  
