@@ -1,9 +1,10 @@
-name: 登录  # 中文名字
+name: Login
 
 on:
   workflow_dispatch:  # 手动触发
+  
   schedule:
-    - cron: '41 9 */7 * *'  # 定时触发
+    - cron: '41 9 */7 * *'
 
 env:
   ACCOUNTS_JSON: ${{ secrets.ACCOUNTS_JSON }}
@@ -13,22 +14,21 @@ jobs:
     runs-on: ubuntu-latest  
   
     steps:  
-      - name: 检出代码库  # 中文描述
+      - name: Checkout repository  
         uses: actions/checkout@v3  
   
-      - name: 设置 Node.js  # 中文描述
+      - name: Set up Node.js  
         uses: actions/setup-node@v3  
         with:  
           node-version: '20.x'  
   
-      - name: 安装依赖  # 中文描述
-        run: npm install  # 确保安装所有依赖，包括 axios
+      - name: Install dependencies  
+        run: npm install puppeteer  
   
-      - name: 创建 accounts.json  # 中文描述
+      - name: Create accounts.json  
         run: echo "$ACCOUNTS_JSON" > accounts.json  
   
-      - name: 登录网站  # 中文描述
+      - name: Login to website  
         run: |  
           set -e  
           xvfb-run --server-args="-screen 0 1280x1024x24" node login.js
-
