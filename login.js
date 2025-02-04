@@ -1,5 +1,6 @@
 const fs = require('fs');
 const puppeteer = require('puppeteer');
+const axios = require('axios');
 
 function formatToISO(date) {
   return date.toISOString().replace('T', ' ').replace('Z', '').replace(/\.\d{3}Z/, '');
@@ -15,7 +16,7 @@ async function delayTime(ms) {
   const accounts = JSON.parse(accountsJson);
 
   for (const account of accounts) {
-    const { username, password, panelnum,bark } = account;
+    const { username, password, panelnum, bark, TGTOKEN, chatid } = account;
 
     const browser = await puppeteer.launch({ headless: false });
     const page = await browser.newPage();
@@ -56,16 +57,41 @@ async function delayTime(ms) {
 
       if (isLoggedIn) {
         // 获取当前的UTC时间和北京时间
-        const nowUtc = formatToISO(new Date());// UTC时间
-        const nowBeijing = formatToISO(new Date(new Date().getTime() + 8 * 60 * 60 * 1000)); // 北京时间东8区，用算术来搞
-        if(bark) await fetch(`https://api.day.app/${bark}/Serv00自动登录/账号 ${username} 于北京时间 ${nowBeijing}（UTC时间 ${nowUtc}）登录成功！`);
+        const nowUtc = formatToISO(new Date());
+        const nowBeijing = formatToISO(new Date(new Date().getTime() + 8 * 60 * 60 * 1000));
+        
+        // 使用 Telegram 发送登录成功消息
+        if (TGTOKEN && chatid) {
+          await axios.get(`https://api.telegram.org/bot${TGTOKEN}/sendMessage`, {
+            params: {
+              chat_id: chatid,
+              text: `账号 ${username} 于北京时间 ${nowBeijing}（UTC时间 ${nowUtc}）登录成功！`
+            }
+          });
+        }
         console.log(`账号 ${username} 于北京时间 ${nowBeijing}（UTC时间 ${nowUtc}）登录成功！`);
       } else {
-        if(bark) await fetch(`https://api.day.app/${bark}/Serv00自动登录/账号 ${username} 登录失败，请检查账号和密码是否正确。`);
+        // 使用 Telegram 发送登录失败消息
+        if (TGTOKEN && chatid) {
+          await axios.get(`https://api.telegram.org/bot${TGTOKEN}/sendMessage`, {
+            params: {
+              chat_id: chatid,
+              text: `账号 ${username} 登录失败，请检查账号和密码是否正确。`
+            }
+          });
+        }
         console.error(`账号 ${username} 登录失败，请检查账号和密码是否正确。`);
       }
     } catch (error) {
-      if(bark) await fetch(`https://api.day.app/${bark}/Serv00自动登录/账号 ${username} 登录时出现错误: ${error}`);
+      // 使用 Telegram 发送错误消息
+      if (TGTOKEN && chatid) {
+        await axios.get(`https://api.telegram.org/bot${TGTOKEN}/sendMessage`, {
+          params: {
+            chat_id: chatid,
+            text: `账号 ${username} 登录时出现错误: ${error}`
+          }
+        });
+      }
       console.error(`账号 ${username} 登录时出现错误: ${error}`);
     } finally {
       // 关闭页面和浏览器
