@@ -54,33 +54,6 @@ jobs:
             libxdamage1 \
             libxext6 \
             libxi6 \
-            libxtst6 \
-            libnss3 \
-            libgconf-2-4 \
-            libasound2 \
-            libatk-bridge2.0-0 \
-            libgtk-3-0 \
-            libxss1 \
-            libx11-xcb1 \
-            libxcomposite1 \
-            libxrandr2 \
-            libgbm1 \
-            libxshmfence1 \
-            fonts-liberation \
-            libappindicator3-1 \
-            libnspr4 \
-            libxss1 \
-            libx11-6 \
-            libx11-xcb1 \
-            libxcomposite1 \
-            libxrandr2 \
-            libgbm1 \
-            libxshmfence1 \
-            libatk1.0-0 \
-            libcups2 \
-            libxdamage1 \
-            libxext6 \
-            libxi6 \
             libxtst6
 
       - name: 创建 accounts.json  # 中文描述
