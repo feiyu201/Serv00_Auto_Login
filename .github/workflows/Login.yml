@@ -21,9 +21,9 @@ jobs:
         with:  
           node-version: '20.x'  
   
-      - name: 安装依赖  # 中文描述
-        run: npm install  # 确保安装所有依赖，包括 axios 和 puppeteer
-
+      - name: 安装 Puppeteer  # 安装 Puppeteer 依赖
+        run: npm install puppeteer  # 安装 Puppeteer
+  
       - name: 安装必要的系统依赖  # 安装 Puppeteer 需要的依赖
         run: |
           sudo apt-get update
