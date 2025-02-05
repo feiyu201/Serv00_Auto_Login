@@ -23,6 +23,9 @@ jobs:
   
       - name: 安装 Puppeteer  # 安装 Puppeteer 依赖
         run: npm install puppeteer  # 安装 Puppeteer
+
+      - name: 安装 Axios  # 安装 Axios 依赖
+        run: npm install axios  # 安装 Axios
   
       - name: 安装必要的系统依赖  # 安装 Puppeteer 需要的依赖
         run: |
