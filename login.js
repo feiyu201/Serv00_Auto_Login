@@ -18,7 +18,7 @@ async function delayTime(ms) {
   for (const account of accounts) {
     const { username, password, panelnum, bark, TGTOKEN, chatid } = account;
 
-    const browser = await puppeteer.launch({ headless: false });
+    const browser = await puppeteer.launch({ headless: true });
     const page = await browser.newPage();
 
     let url = `https://panel${panelnum}.serv00.com/login/?next=/`;
