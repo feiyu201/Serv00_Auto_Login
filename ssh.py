@@ -13,27 +13,27 @@ def ssh_connect(host, username, password, TGTOKEN, chatid):
     try:
         transport = paramiko.Transport((host, 22))
         transport.connect(username=username, password=password)
-        ssh_status = "SSH连接成功"
-        print(f"SSH连接成功。")
+        ssh_status = "serv00SSH连接成功"
+        print(f"serv00SSH连接成功。")
 
         # 使用 Telegram 发送连接成功消息
         if TGTOKEN and chatid:
             url = f"https://api.telegram.org/bot{TGTOKEN}/sendMessage"
             payload = {
                 'chat_id': chatid,
-                'text': f"账号 {username} SSH连接成功。"
+                'text': f"serv00账号 {username} SSH连接成功。"
             }
             requests.post(url, data=payload)
     except Exception as e:
-        ssh_status = f"SSH连接失败，错误信息: {e}"
-        print(f"SSH连接失败: {e}")
+        ssh_status = f"serv00SSH连接失败，错误信息: {e}"
+        print(f"serv00SSH连接失败: {e}")
 
         # 使用 Telegram 发送连接失败消息
         if TGTOKEN and chatid:
             url = f"https://api.telegram.org/bot{TGTOKEN}/sendMessage"
             payload = {
                 'chat_id': chatid,
-                'text': f"账号 {username} SSH连接失败，请检查账号和密码是否正确。"
+                'text': f"serv00账号 {username} SSH连接失败，请检查账号和密码是否正确。"
             }
             requests.post(url, data=payload)
     finally:
