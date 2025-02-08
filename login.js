@@ -68,22 +68,22 @@ async function delayTime(ms) {
           await axios.get(`https://api.telegram.org/bot${TGTOKEN}/sendMessage`, {
             params: {
               chat_id: chatid,
-              text: `账号 ${username} 于北京时间 ${nowBeijing}（UTC时间 ${nowUtc}）登录成功！`
+              text: `serv00账号 ${username} 于北京时间 ${nowBeijing}（UTC时间 ${nowUtc}）登录成功！`
             }
           });
         }
-        console.log(`账号 ${username} 于北京时间 ${nowBeijing}（UTC时间 ${nowUtc}）登录成功！`);
+        console.log(`serv00账号 ${username} 于北京时间 ${nowBeijing}（UTC时间 ${nowUtc}）登录成功！`);
       } else {
         // 使用 Telegram 发送登录失败消息
         if (TGTOKEN && chatid) {
           await axios.get(`https://api.telegram.org/bot${TGTOKEN}/sendMessage`, {
             params: {
               chat_id: chatid,
-              text: `账号 ${username} 登录失败，请检查账号和密码是否正确。`
+              text: `serv00账号 ${username} 登录失败，请检查账号和密码是否正确。`
             }
           });
         }
-        console.error(`账号 ${username} 登录失败，请检查账号和密码是否正确。`);
+        console.error(`serv00账号 ${username} 登录失败，请检查账号和密码是否正确。`);
       }
     } catch (error) {
       // 使用 Telegram 发送错误消息
@@ -91,11 +91,11 @@ async function delayTime(ms) {
         await axios.get(`https://api.telegram.org/bot${TGTOKEN}/sendMessage`, {
           params: {
             chat_id: chatid,
-            text: `账号 ${username} 登录时出现错误: ${error}`
+            text: `serv00账号 ${username} 登录时出现错误: ${error}`
           }
         });
       }
-      console.error(`账号 ${username} 登录时出现错误: ${error}`);
+      console.error(`serv00账号 ${username} 登录时出现错误: ${error}`);
     } finally {
       // 关闭页面和浏览器
       await page.close();
@@ -107,7 +107,7 @@ async function delayTime(ms) {
     }
   }
 
-  console.log('所有账号登录完成！');
+  console.log('serv00所有账号登录完成！');
 })();
 
 // 自定义延时函数
