@@ -10,16 +10,6 @@
 { "username": "zhaogao", "password": "daqinzhonggong", "panelnum": "2", "bark": "apikey", "host": "s3.serv00.com", "TGTOKEN": "your_telegram_bot_token", "chatid": "your_chat_id" },
 { "username": "heiheihei", "password": "shaibopengke", "panelnum": "3", "bark": "apikey", "host": "s3.serv00.com", "TGTOKEN": "your_telegram_bot_token", "chatid": "your_chat_id" }
 ]
-]
 ```
 > 其中`panelnum`参数为面板编号，即为你所收到注册邮件的`panel*.serv00.com`中的`*`数值。
-
-## 贡献
-|姓名|主页|内容|
-| :------------: | :------------: | :------------: |
-|linzjian666|https://github.com/linzjian666|增加多面板支持|
-
-## 参考信息
-|  名称 |来源|地址|
-| :------------: | :------------: | :------------: |
-|Limkon|Github|https://github.com/Limkon|
+> 其中`TGTOKEN`参数为Telegram.的机器人token,`chatid`参数为需要通知人的ID
