@@ -12,3 +12,6 @@
 ```
 > 其中`panelnum`参数为面板编号，即为你所收到注册邮件的`panel*.serv00.com`中的`*`数值。
 > 其中`TGTOKEN`参数为Telegram.的机器人token,`chatid`参数为需要通知人的ID(可留空)
+
+
+
